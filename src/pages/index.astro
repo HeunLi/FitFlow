@@ -1,0 +1,588 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>FitFlow - Your Personal Fitness Journey</title>
+		<meta name="description" content="Transform your health with AI-powered fitness coaching. Achieve your fitness goals with personalized workouts, nutrition tracking, and expert guidance." />
+	</head>
+	<body class="bg-white text-gray-900">
+		<style>
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
+
+			@keyframes float {
+				0%, 100% {
+					transform: translateY(0px);
+				}
+				50% {
+					transform: translateY(-10px);
+				}
+			}
+
+			@keyframes pulse {
+				0%, 100% {
+					transform: scale(1);
+				}
+				50% {
+					transform: scale(1.05);
+				}
+			}
+
+			@keyframes slideInLeft {
+				from {
+					opacity: 0;
+					transform: translateX(-50px);
+				}
+				to {
+					opacity: 1;
+					transform: translateX(0);
+				}
+			}
+
+			@keyframes slideInRight {
+				from {
+					opacity: 0;
+					transform: translateX(50px);
+				}
+				to {
+					opacity: 1;
+					transform: translateX(0);
+				}
+			}
+
+			.animate-fadeInUp {
+				animation: fadeInUp 0.8s ease-out forwards;
+			}
+
+			.animate-fadeIn {
+				animation: fadeIn 1s ease-out forwards;
+			}
+
+			.animate-float {
+				animation: float 3s ease-in-out infinite;
+			}
+
+			.animate-pulse-slow {
+				animation: pulse 2s ease-in-out infinite;
+			}
+
+			.animate-slideInLeft {
+				animation: slideInLeft 0.8s ease-out forwards;
+			}
+
+			.animate-slideInRight {
+				animation: slideInRight 0.8s ease-out forwards;
+			}
+
+			.animation-delay-200 {
+				animation-delay: 0.2s;
+			}
+
+			.animation-delay-400 {
+				animation-delay: 0.4s;
+			}
+
+			.animation-delay-600 {
+				animation-delay: 0.6s;
+			}
+
+			.animation-delay-800 {
+				animation-delay: 0.8s;
+			}
+
+			.animation-delay-1000 {
+				animation-delay: 1s;
+			}
+
+			.opacity-0 {
+				opacity: 0;
+			}
+
+			.feature-card {
+				transition: all 0.3s ease;
+			}
+
+			.feature-card:hover {
+				transform: translateY(-8px);
+				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+			}
+
+			.pricing-card {
+				transition: all 0.3s ease;
+			}
+
+			.pricing-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+			}
+
+			.nav-link {
+				position: relative;
+				transition: color 0.3s ease;
+			}
+
+			.nav-link::after {
+				content: '';
+				position: absolute;
+				width: 0;
+				height: 2px;
+				bottom: -4px;
+				left: 50%;
+				background: linear-gradient(90deg, #10b981, #059669);
+				transition: all 0.3s ease;
+				transform: translateX(-50%);
+			}
+
+			.nav-link:hover::after {
+				width: 100%;
+			}
+
+			.btn-primary {
+				position: relative;
+				overflow: hidden;
+				transition: all 0.3s ease;
+			}
+
+			.btn-primary::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+				transition: left 0.5s;
+			}
+
+			.btn-primary:hover::before {
+				left: 100%;
+			}
+
+			.btn-primary:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+			}
+
+			.btn-secondary {
+				transition: all 0.3s ease;
+			}
+
+			.btn-secondary:hover {
+				transform: translateY(-2px);
+				background-color: rgba(16, 185, 129, 0.1);
+				border-color: #10b981;
+			}
+
+			.logo-text {
+				transition: all 0.3s ease;
+			}
+
+			.logo-text:hover {
+				transform: scale(1.05);
+			}
+
+			.icon-bounce:hover {
+				animation: bounce 0.6s ease;
+			}
+
+			@keyframes bounce {
+				0%, 20%, 50%, 80%, 100% {
+					transform: translateY(0);
+				}
+				40% {
+					transform: translateY(-8px);
+				}
+				60% {
+					transform: translateY(-4px);
+				}
+			}
+
+			.gradient-text {
+				background: linear-gradient(-45deg, #10b981, #059669, #34d399, #10b981);
+				background-size: 400% 400%;
+				animation: gradientShift 4s ease infinite;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+
+			@keyframes gradientShift {
+				0% {
+					background-position: 0% 50%;
+				}
+				50% {
+					background-position: 100% 50%;
+				}
+				100% {
+					background-position: 0% 50%;
+				}
+			}
+
+			.stat-card {
+				transition: all 0.3s ease;
+			}
+
+			.stat-card:hover {
+				transform: scale(1.02);
+				background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2));
+			}
+		</style>
+		<!-- Navigation -->
+		<nav class="fixed w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50 opacity-0 animate-fadeIn shadow-sm">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="flex justify-between h-16">
+					<div class="flex items-center">
+						<div class="flex-shrink-0">
+							<h1 class="text-2xl font-bold gradient-text logo-text">FitFlow</h1>
+						</div>
+					</div>
+					<div class="hidden md:flex items-center space-x-8">
+						<a href="#features" class="nav-link text-gray-600 hover:text-emerald-600">Features</a>
+						<a href="#pricing" class="nav-link text-gray-600 hover:text-emerald-600">Pricing</a>
+						<a href="#contact" class="nav-link text-gray-600 hover:text-emerald-600">Contact</a>
+						<button class="btn-primary bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded-lg text-white font-medium">
+							Get Started
+						</button>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Hero Section -->
+		<section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+			<div class="max-w-7xl mx-auto text-center">
+				<h1 class="text-4xl md:text-6xl font-bold mb-6 opacity-0 animate-fadeInUp">
+					<span class="gradient-text">
+						Transform Your Body
+					</span>
+					<br />
+					<span class="text-gray-800 opacity-0 animate-fadeInUp animation-delay-200">Achieve Your Fitness Goals</span>
+				</h1>
+				<p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto opacity-0 animate-fadeInUp animation-delay-400">
+					Personalized fitness coaching powered by AI. Get custom workout plans, nutrition tracking,
+					and real-time progress monitoring to reach your health goals faster than ever.
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fadeInUp animation-delay-600">
+					<button class="btn-primary bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-lg text-white font-semibold text-lg shadow-lg hover:shadow-emerald-500/25">
+						Start Your Journey
+					</button>
+					<button class="btn-secondary border border-emerald-600 hover:border-emerald-700 px-8 py-4 rounded-lg text-emerald-600 hover:text-emerald-700 font-semibold text-lg">
+						See Success Stories
+					</button>
+				</div>
+				<div class="mt-12 opacity-0 animate-fadeInUp animation-delay-800">
+					<div class="stat-card bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl p-8 border border-emerald-200 animate-float shadow-lg">
+						<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+							<div class="opacity-0 animate-fadeIn animation-delay-1000">
+								<div class="text-3xl font-bold text-emerald-600">50k+</div>
+								<div class="text-gray-600">Active Users</div>
+							</div>
+							<div class="opacity-0 animate-fadeIn animation-delay-1000" style="animation-delay: 1.2s;">
+								<div class="text-3xl font-bold text-green-600">85%</div>
+								<div class="text-gray-600">Reach Their Goals</div>
+							</div>
+							<div class="opacity-0 animate-fadeIn animation-delay-1000" style="animation-delay: 1.4s;">
+								<div class="text-3xl font-bold text-emerald-500">4.9★</div>
+								<div class="text-gray-600">App Store Rating</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Features Section -->
+		<section id="features" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+			<div class="max-w-7xl mx-auto">
+				<div class="text-center mb-16 opacity-0 animate-fadeInUp">
+					<h2 class="text-3xl md:text-5xl font-bold mb-4">
+						<span class="gradient-text">
+							Powerful Features
+						</span>
+					</h2>
+					<p class="text-xl text-gray-600 max-w-2xl mx-auto">
+						Everything you need to transform your health and reach your fitness goals
+					</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					<div class="feature-card bg-white rounded-xl p-8 border border-gray-200 hover:border-emerald-300 shadow-sm hover:shadow-lg opacity-0 animate-fadeInUp animation-delay-200">
+						<div class="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center mb-6 icon-bounce">
+							<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-semibold mb-4 text-gray-800">AI Personal Trainer</h3>
+						<p class="text-gray-600">Get personalized workout plans that adapt to your fitness level, progress, and goals automatically.</p>
+					</div>
+
+					<div class="feature-card bg-white rounded-xl p-8 border border-gray-200 hover:border-green-300 shadow-sm hover:shadow-lg opacity-0 animate-fadeInUp animation-delay-400">
+						<div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-6 icon-bounce">
+							<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-semibold mb-4 text-gray-800">Progress Analytics</h3>
+						<p class="text-gray-600">Track your fitness journey with detailed analytics, progress photos, and performance metrics.</p>
+					</div>
+
+					<div class="feature-card bg-white rounded-xl p-8 border border-gray-200 hover:border-emerald-300 shadow-sm hover:shadow-lg opacity-0 animate-fadeInUp animation-delay-600">
+						<div class="w-12 h-12 bg-emerald-500 rounded-lg flex items-center justify-center mb-6 icon-bounce">
+							<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-semibold mb-4 text-gray-800">Nutrition Tracking</h3>
+						<p class="text-gray-600">Log meals, track calories, and get personalized nutrition recommendations for optimal health.</p>
+					</div>
+
+					<div class="feature-card bg-white rounded-xl p-8 border border-gray-200 hover:border-green-300 shadow-sm hover:shadow-lg opacity-0 animate-fadeInUp animation-delay-800">
+						<div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-6 icon-bounce">
+							<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-semibold mb-4 text-gray-800">Community Support</h3>
+						<p class="text-gray-600">Join a community of fitness enthusiasts, share progress, and get motivation from others.</p>
+					</div>
+
+					<div class="feature-card bg-white rounded-xl p-8 border border-gray-200 hover:border-emerald-300 shadow-sm hover:shadow-lg opacity-0 animate-fadeInUp animation-delay-1000">
+						<div class="w-12 h-12 bg-emerald-400 rounded-lg flex items-center justify-center mb-6 icon-bounce">
+							<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-semibold mb-4 text-gray-800">Workout Scheduling</h3>
+						<p class="text-gray-600">Smart scheduling that fits workouts into your busy life with reminders and flexibility.</p>
+					</div>
+
+					<div class="feature-card bg-white rounded-xl p-8 border border-gray-200 hover:border-green-300 shadow-sm hover:shadow-lg opacity-0 animate-fadeInUp" style="animation-delay: 1.2s;">
+						<div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-6 icon-bounce">
+							<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-semibold mb-4 text-gray-800">Expert Coaching</h3>
+						<p class="text-gray-600">Access certified trainers and nutritionists for personalized guidance and support.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Pricing Section -->
+		<section id="pricing" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+			<div class="max-w-7xl mx-auto">
+				<div class="text-center mb-16 opacity-0 animate-fadeInUp">
+					<h2 class="text-3xl md:text-5xl font-bold mb-4">
+						<span class="gradient-text">
+							Simple Pricing
+						</span>
+					</h2>
+					<p class="text-xl text-gray-600 max-w-2xl mx-auto">
+						Choose the perfect plan for your fitness journey and goals
+					</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<div class="pricing-card bg-gray-50 rounded-xl p-8 border border-gray-200 shadow-sm opacity-0 animate-slideInLeft animation-delay-200">
+						<div class="text-center mb-8">
+							<h3 class="text-2xl font-bold text-gray-800 mb-2">Basic</h3>
+							<div class="text-4xl font-bold text-emerald-600 mb-2">$9</div>
+							<div class="text-gray-600">per month</div>
+						</div>
+						<ul class="space-y-4 mb-8">
+							<li class="flex items-center text-gray-600">
+								<svg class="w-5 h-5 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+								</svg>
+								Basic workout plans
+							</li>
+							<li class="flex items-center text-gray-600">
+								<svg class="w-5 h-5 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+								</svg>
+								Progress tracking
+							</li>
+							<li class="flex items-center text-gray-600">
+								<svg class="w-5 h-5 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+								</svg>
+								Nutrition basics
+							</li>
+						</ul>
+						<button class="w-full bg-gray-700 hover:bg-gray-800 px-6 py-3 rounded-lg text-white font-semibold transition-colors">
+							Start Basic Plan
+						</button>
+					</div>
+
+					<div class="pricing-card bg-white rounded-xl p-8 border-2 border-emerald-500 relative opacity-0 animate-fadeInUp animation-delay-400 shadow-lg">
+						<div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+							<span class="bg-emerald-600 text-white px-4 py-2 rounded-full text-sm font-semibold">Most Popular</span>
+						</div>
+						<div class="text-center mb-8">
+							<h3 class="text-2xl font-bold text-gray-800 mb-2">Premium</h3>
+							<div class="text-4xl font-bold text-emerald-600 mb-2">$19</div>
+							<div class="text-gray-600">per month</div>
+						</div>
+						<ul class="space-y-4 mb-8">
+							<li class="flex items-center text-gray-600">
+								<svg class="w-5 h-5 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+								</svg>
+								Personalized AI workouts
+							</li>
+							<li class="flex items-center text-gray-600">
+								<svg class="w-5 h-5 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+								</svg>
+								Advanced analytics
+							</li>
+							<li class="flex items-center text-gray-600">
+								<svg class="w-5 h-5 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+								</svg>
+								Meal planning & recipes
+							</li>
+							<li class="flex items-center text-gray-600">
+								<svg class="w-5 h-5 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+								</svg>
+								Priority support
+							</li>
+						</ul>
+						<button class="w-full bg-emerald-600 hover:bg-emerald-700 px-6 py-3 rounded-lg text-white font-semibold transition-colors">
+							Start Premium Plan
+						</button>
+					</div>
+
+					<div class="pricing-card bg-gray-50 rounded-xl p-8 border border-gray-200 shadow-sm opacity-0 animate-slideInRight animation-delay-600">
+						<div class="text-center mb-8">
+							<h3 class="text-2xl font-bold text-gray-800 mb-2">Elite</h3>
+							<div class="text-4xl font-bold text-emerald-600 mb-2">$39</div>
+							<div class="text-gray-600">per month</div>
+						</div>
+						<ul class="space-y-4 mb-8">
+							<li class="flex items-center text-gray-600">
+								<svg class="w-5 h-5 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+								</svg>
+								1-on-1 personal training
+							</li>
+							<li class="flex items-center text-gray-600">
+								<svg class="w-5 h-5 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+								</svg>
+								Custom nutrition plans
+							</li>
+							<li class="flex items-center text-gray-600">
+								<svg class="w-5 h-5 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+								</svg>
+								Weekly coach check-ins
+							</li>
+							<li class="flex items-center text-gray-600">
+								<svg class="w-5 h-5 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+								</svg>
+								24/7 expert support
+							</li>
+						</ul>
+						<button class="w-full bg-gray-700 hover:bg-gray-800 px-6 py-3 rounded-lg text-white font-semibold transition-colors">
+							Start Elite Plan
+						</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA Section -->
+		<section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-emerald-50 to-green-50">
+			<div class="max-w-4xl mx-auto text-center">
+				<h2 class="text-3xl md:text-5xl font-bold mb-6 opacity-0 animate-fadeInUp">
+					<span class="gradient-text">
+						Ready to Transform Your Health?
+					</span>
+				</h2>
+				<p class="text-xl text-gray-600 mb-8 opacity-0 animate-fadeInUp animation-delay-200">
+					Join thousands of people already using FitFlow to achieve their fitness goals and live healthier lives.
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fadeInUp animation-delay-400">
+					<button class="btn-primary bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-lg text-white font-semibold text-lg shadow-lg hover:shadow-emerald-500/25 animate-pulse-slow">
+						Start Your Fitness Journey
+					</button>
+					<button class="btn-secondary border border-emerald-600 hover:border-emerald-700 px-8 py-4 rounded-lg text-emerald-600 hover:text-emerald-700 font-semibold text-lg">
+						See Transformation Stories
+					</button>
+				</div>
+				<p class="text-sm text-gray-500 mt-6 opacity-0 animate-fadeIn animation-delay-600">
+					No credit card required • 7-day free trial • Cancel anytime
+				</p>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer class="bg-gray-900 py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-200">
+			<div class="max-w-7xl mx-auto">
+				<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+					<div class="opacity-0 animate-fadeInUp">
+						<h3 class="text-2xl font-bold gradient-text mb-4 logo-text">FitFlow</h3>
+						<p class="text-gray-300">Empowering your fitness journey with AI-powered personalized coaching.</p>
+					</div>
+					<div class="opacity-0 animate-fadeInUp animation-delay-200">
+						<h4 class="text-white font-semibold mb-4">Features</h4>
+						<ul class="space-y-2 text-gray-300">
+							<li><a href="#" class="nav-link hover:text-emerald-400 transition-colors">Workout Plans</a></li>
+							<li><a href="#" class="nav-link hover:text-emerald-400 transition-colors">Nutrition Tracking</a></li>
+							<li><a href="#" class="nav-link hover:text-emerald-400 transition-colors">Progress Analytics</a></li>
+							<li><a href="#" class="nav-link hover:text-emerald-400 transition-colors">Personal Training</a></li>
+						</ul>
+					</div>
+					<div class="opacity-0 animate-fadeInUp animation-delay-400">
+						<h4 class="text-white font-semibold mb-4">Company</h4>
+						<ul class="space-y-2 text-gray-300">
+							<li><a href="#" class="nav-link hover:text-emerald-400 transition-colors">About</a></li>
+							<li><a href="#" class="nav-link hover:text-emerald-400 transition-colors">Careers</a></li>
+							<li><a href="#" class="nav-link hover:text-emerald-400 transition-colors">Press</a></li>
+							<li><a href="#" class="nav-link hover:text-emerald-400 transition-colors">Contact</a></li>
+						</ul>
+					</div>
+					<div class="opacity-0 animate-fadeInUp animation-delay-600">
+						<h4 class="text-white font-semibold mb-4">Support</h4>
+						<ul class="space-y-2 text-gray-300">
+							<li><a href="#" class="nav-link hover:text-emerald-400 transition-colors">Help Center</a></li>
+							<li><a href="#" class="nav-link hover:text-emerald-400 transition-colors">Fitness Guides</a></li>
+							<li><a href="#" class="nav-link hover:text-emerald-400 transition-colors">Community</a></li>
+							<li><a href="#" class="nav-link hover:text-emerald-400 transition-colors">Expert Q&A</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 opacity-0 animate-fadeIn animation-delay-800">
+					<p>&copy; 2024 FitFlow. All rights reserved.</p>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
