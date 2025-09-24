@@ -1,10 +1,14 @@
-# Astro Starter Kit: Minimal
+# FitFlow - Fitness Landing Page
 
-```sh
-npm create astro@latest -- --template minimal
-```
+A modern, responsive fitness application landing page built with Astro and Tailwind CSS.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🏋️‍♀️ Features
+
+- **Clean Design** - White and green healthy theme
+- **Responsive Layout** - Works on all devices
+- **Smooth Animations** - Professional fade-in and hover effects
+- **Modern Tech Stack** - Astro + Tailwind CSS
+- **Fitness Focused** - AI personal training, nutrition tracking, progress analytics
 
 ## 🚀 Project Structure
 
@@ -13,17 +17,20 @@ Inside of your Astro project, you'll see the following folders and files:
 ```text
 /
 ├── public/
+│   └── favicon.svg          # FitFlow dumbbell icon
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── pages/
+│   │   └── index.astro      # Main landing page
+│   └── styles/
+│       └── global.css       # Tailwind CSS styles
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
+The main landing page includes:
+- Hero section with animated stats
+- Features showcase (6 key fitness features)
+- Pricing plans (Basic, Premium, Elite)
+- Call-to-action and footer
 
 ## 🧞 Commands
 
@@ -38,6 +45,26 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## 🎨 Design Features
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Color Scheme**: Clean white backgrounds with emerald green accents
+- **Typography**: Modern font hierarchy with gradient text effects
+- **Animations**: Smooth fade-in transitions and hover effects
+- **Icons**: Custom fitness-themed SVG icons and dumbbell favicon
+- **Responsive**: Mobile-first design that works on all screen sizes
+
+## 📱 Pages & Sections
+
+- **Navigation**: Fixed header with smooth scroll links
+- **Hero**: Animated headline with key metrics (50k+ users, 85% success rate)
+- **Features**: AI Personal Trainer, Progress Analytics, Nutrition Tracking, etc.
+- **Pricing**: Three tiers - Basic ($9), Premium ($19), Elite ($39)
+- **CTA**: Call-to-action with 7-day free trial
+- **Footer**: Links and company information
+
+## 🚀 Quick Start
+
+1. Install dependencies: `npm install`
+2. Start dev server: `npm run dev`
+3. Open http://localhost:4321
+4. Edit `src/pages/index.astro` to customize
